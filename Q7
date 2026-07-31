@@ -1,0 +1,59 @@
+# Q5. Context Switch Overhead
+
+## Given
+
+Context switches = 20,000/sec
+
+Burst Time = 2 ms
+
+Time Quantum = 1 ms
+
+Very high I/O frequency
+
+---
+
+## Root Cause
+
+The quantum is shorter than the average CPU burst.
+
+Each thread is preempted before completing execution.
+
+Frequent I/O operations also trigger additional context switches.
+
+This produces excessive scheduling overhead.
+
+---
+
+## Optimization 1
+
+Increase Time Quantum
+
+Example:
+
+1 ms → 4 ms
+
+This reduces unnecessary context switches.
+
+---
+
+## Optimization 2
+
+Reduce I/O waits
+
+- Buffer I/O
+- Use asynchronous I/O
+- Batch disk operations
+
+---
+
+## Benefits
+
+- Lower context switching
+- Higher CPU utilization
+- Better throughput
+
+---
+
+## Conclusion
+
+Short time quantum and frequent I/O cause excessive context switching. Increasing quantum and optimizing I/O significantly reduce overhead.

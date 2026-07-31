@@ -1,0 +1,44 @@
+# Q2. CPU Utilization Problem
+
+## Problem
+
+CPU Utilization = 30%
+
+Scheduler Log:
+
+```text
+Ready → Waiting → Ready → Waiting → Ready
+```
+
+---
+
+## Root Cause
+
+Processes frequently enter the Waiting state because they spend most of their time waiting for I/O operations.
+
+The CPU remains idle while processes wait.
+
+This is an I/O-bound workload.
+
+---
+
+## Effects
+
+- Low CPU utilization
+- Frequent context switching
+- Poor system throughput
+
+---
+
+## Optimization
+
+1. Use asynchronous I/O.
+2. Increase multiprogramming level.
+3. Schedule CPU-bound jobs alongside I/O-bound jobs.
+4. Improve disk or device performance.
+
+---
+
+## Conclusion
+
+The CPU is underutilized because processes repeatedly wait for I/O. Better scheduling and asynchronous I/O improve utilization.

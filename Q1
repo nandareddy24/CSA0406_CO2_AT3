@@ -1,0 +1,76 @@
+# Q1. Deadlock Debugging
+
+## Problem
+
+Two processes share resources R1 and R2.
+
+### Process P1
+
+```text
+lock(R1)
+wait(100 ms)
+lock(R2)
+critical section
+unlock(R2)
+unlock(R1)
+```
+
+### Process P2
+
+```text
+lock(R2)
+wait(100 ms)
+lock(R1)
+critical section
+unlock(R1)
+unlock(R2)
+```
+
+---
+
+## Root Cause
+
+Deadlock occurs because:
+
+- P1 locks R1.
+- P2 locks R2.
+- P1 waits for R2.
+- P2 waits for R1.
+
+Both processes wait forever.
+
+This creates a Circular Wait condition.
+
+---
+
+## Deadlock Conditions
+
+1. Mutual Exclusion ✔
+2. Hold and Wait ✔
+3. No Preemption ✔
+4. Circular Wait ✔
+
+Since all four conditions are satisfied, deadlock occurs.
+
+---
+
+## Optimization
+
+Use a fixed resource ordering.
+
+Example:
+
+Both processes must always acquire:
+
+R1 → R2
+
+instead of different orders.
+
+This removes Circular Wait and prevents deadlock without changing process logic.
+
+---
+
+## Conclusion
+
+Deadlock is caused by inconsistent lock ordering.
+A global lock ordering policy completely eliminates the issue.

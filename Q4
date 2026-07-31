@@ -1,0 +1,53 @@
+# Q4. Starvation Debugging
+
+## Problem
+
+Scheduler:
+
+Q1 → Interactive
+
+Q2 → System
+
+Q3 → Batch
+
+P5 is in Q3.
+
+---
+
+## Root Cause
+
+Higher-priority queues continuously receive new jobs.
+
+Q3 receives CPU only when Q1 and Q2 become empty.
+
+Since this rarely happens, P5 waits indefinitely.
+
+This is starvation.
+
+---
+
+## Optimization
+
+Implement Aging.
+
+Example:
+
+Every 30 seconds
+
+Increase process priority.
+
+Eventually P5 moves to Q2 and later Q1.
+
+---
+
+## Benefits
+
+- Prevents starvation
+- Ensures fairness
+- Improves response time
+
+---
+
+## Conclusion
+
+Aging gradually increases waiting process priority and guarantees CPU allocation.

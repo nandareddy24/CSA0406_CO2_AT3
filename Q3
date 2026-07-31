@@ -1,0 +1,67 @@
+# Q3. Memory Bottleneck Debugging
+
+## Given
+
+Code = 5 MB
+
+Heap = 150 MB
+
+Stack = 1 MB/thread
+
+Threads = 25
+
+RAM = 2 GB
+
+---
+
+## Memory Usage
+
+Code
+
+5 MB
+
+Heap
+
+150 MB
+
+Stacks
+
+25 × 1 MB = 25 MB
+
+Total
+
+180 MB
+
+---
+
+## Root Cause
+
+Although total memory usage is only 180 MB, the application experiences frequent page faults because:
+
+- Large heap causes poor locality.
+- Threads access different memory pages.
+- Working set exceeds cache efficiency.
+- Memory fragmentation increases page faults.
+
+---
+
+## Optimization 1
+
+Reduce heap usage.
+
+- Free unused memory.
+- Use memory pooling.
+
+---
+
+## Optimization 2
+
+Reduce thread count.
+
+Use a thread pool instead of creating many threads.
+
+---
+
+## Conclusion
+
+Performance degradation is caused by excessive page faults and inefficient memory access patterns.
